@@ -6,6 +6,8 @@ struct MyStruct {
   double *data;
 };
 
+typedef struct MyStruct* hMyStruct;
+
 void init_MyStruct( struct MyStruct *a, int N )
 {
   (*a).N = N;
@@ -16,6 +18,11 @@ void init_MyStruct( struct MyStruct *a, int N )
     (*a).data[i] = 1.2;
   }
   printf("Pass here\n");
+}
+
+void modify_MyStruct( hMyStruct a )
+{
+  (*a).data[0] = 3.0;
 }
 
 void info_MyStruct( struct MyStruct a )
@@ -31,7 +38,11 @@ int main()
 {
   printf("Hello from ffr\n");
   struct MyStruct a;
+
   init_MyStruct(&a,3);
+  info_MyStruct(a);
+
+  modify_MyStruct(&a);
   info_MyStruct(a);
 
   return 0;
