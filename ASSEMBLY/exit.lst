@@ -1,0 +1,9 @@
+     1                                 %line 1+1 01_exit.asm
+     2                                 [segment .text]
+     3                                 [global _start]
+     4                                 
+     5                                 _start:
+     6 00000000 B801000000              mov eax,1
+     7 00000005 BB05000000              mov ebx,5
+     8 0000000A CD80                    int 0x80
+     9                                 

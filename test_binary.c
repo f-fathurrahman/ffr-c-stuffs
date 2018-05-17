@@ -23,7 +23,7 @@ void writeDigit( int bcd )
 
   for( i = 0; i < 4; i++ ) {
     int bcdred = bcd & 0x01;
-    printf("\nPORT: %d, value: %o\n", BCD1 + i, bcdred);
+    printf("\nPIN: %d, value: %o\n", BCD1 + i, bcdred);
     printf("After & 0x01 in binary: "BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(bcdred));
     printf("\n");
     bcd = bcd >> 1;
@@ -35,7 +35,7 @@ void writeDigit( int bcd )
 int main()
 {
   int bcd;
-  for( bcd = 0; bcd <= 9; bcd++ ) {
+  for( bcd = 0; bcd <= 11; bcd++ ) {
     writeDigit( bcd );
   }
 
