@@ -2,6 +2,7 @@
 *.swo
 *~
 
+TEMP_*
 tags
 
 # Prerequisites
