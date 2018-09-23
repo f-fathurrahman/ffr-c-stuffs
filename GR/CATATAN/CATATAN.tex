@@ -1,0 +1,73 @@
+\documentclass[a4paper,11pt]{extarticle}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+
+\usepackage{fontspec}
+\setmonofont{FreeMono}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.5em}
+
+\usepackage{textcomp}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{xcolor}
+
+\usepackage{minted}
+\newminted{c}{breaklines,fontsize=\small}
+\newminted{text}{breaklines,fontsize=\small}
+
+\definecolor{mintedbg}{rgb}{0.95,0.95,0.95}
+\usepackage{mdframed}
+
+\BeforeBeginEnvironment{minted}{\begin{mdframed}[backgroundcolor=mintedbg]}
+\AfterEndEnvironment{minted}{\end{mdframed}}
+
+\title{
+Pengenalan GR Framework
+}
+\author{Fadjar Fathurrahman}
+\date{2018}
+
+\begin{document}
+\maketitle
+
+\section{Contoh pertama}
+\begin{ccode}
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <gr.h>
+
+int main()
+{
+  const int N = 10;
+  double *x, *y;
+  x = (double*)malloc(N*sizeof(double));
+  y = (double*)malloc(N*sizeof(double));
+  
+  const double XLEFT=0.0, XRIGHT=1.0;
+  double dx = (XRIGHT - XLEFT)/(N-1);
+
+  int i;
+  for(i = 0; i < N; i++) {
+    x[i] = XLEFT + i*dx;
+    y[i] = sin(x[i])*cos(x[i]);
+  }
+
+  gr_polyline(N, x, y);
+  gr_axes(gr_tick(0,1), gr_tick(0,1), 0, 0, 1, 1, -0.01);
+
+  getc(stdin);
+  return 0;
+}
+\end{ccode}
+
+Set output dalam bentuk PDF (name file default \texttt{gks.pdf})
+
+\textbf{TODO}: Bagaimana mengubah nama output menjadi selain dari \texttt{gks.pdf}?
+
+
+
+\end{document}
