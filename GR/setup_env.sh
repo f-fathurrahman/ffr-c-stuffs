@@ -1,0 +1,2 @@
+export LD_LIBRARY_PATH=$GRDIR/lib:$LD_LIBRARY_PATH
+export GKS_WSTYPE=pdf
